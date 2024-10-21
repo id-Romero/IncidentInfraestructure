@@ -7,6 +7,11 @@ on:
       - 'env/dev/'
       - 'modules/'
 
+permissions:
+    id-token: write
+    contents: read
+    pull-requests: write
+
 env:
   ARM_CLIENT_ID: "${{ secrets.ARM_CLIENT_ID}}"
   ARM_CLIENT_SECRET: "${{ secrets.ARM_CLIENT_SECRET}}"
@@ -53,3 +58,6 @@ jobs:
 
       - name: Terraform plan
         run: terraform -chdir=env/dev plan
+
+      - name: Terraform Apply
+        run: terraform -chdir=env/dev apply --auto-approve
