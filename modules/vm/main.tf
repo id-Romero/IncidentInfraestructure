@@ -27,6 +27,18 @@ resource "azurerm_network_security_group" "IN_SG" {
   resource_group_name = azurerm_resource_group.IN_RG.name
 
   security_rule {
+    name                       = "ssh-allow"
+    priority                   = 101
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "http-allow"
     priority                   = 102
     direction                  = "Inbound"
@@ -51,7 +63,7 @@ resource "azurerm_network_security_group" "IN_SG" {
 
   }
 }
-#Crear asociacion entre subnet y securrity groups
+#Crear asociacion entre subnet y security groups
 resource "azurerm_subnet_network_security_group_association" "IN_SGA" {
   subnet_id                 = azurerm_subnet.IN_SUBNET-DIRL.id
   network_security_group_id = azurerm_network_security_group.IN_SG.id

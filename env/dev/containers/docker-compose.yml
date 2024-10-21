@@ -29,7 +29,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
  
   incident-api:
-      image: juanfr97/712-incident-api:latest
+      image: idromero/monkeycase-api:latest
       container_name: incident-api
       expose:
         - "3000"
