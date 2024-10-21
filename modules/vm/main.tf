@@ -114,7 +114,7 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
 
   admin_ssh_key {
     username   = "${var.admin_username}"
-    public_key = file("../../env/dev/keys/keys.pub")
+    public_key = file("./keys/keys.pub")
   }
 
   provisioner "file" {
@@ -125,7 +125,7 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
   connection {
     type        = "ssh"
     user        = "${var.admin_username}"
-    private_key = file("../../env/dev/keys/keys")
+    private_key = file("./keys/keys")
     host        = self.public_ip_address
   }
 
