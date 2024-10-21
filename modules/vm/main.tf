@@ -130,24 +130,24 @@ resource "azurerm_linux_virtual_machine" "IN_VM" {
   }
 
   provisioner "remote-exec" {
-    inline = [
-        "sudo su -c 'mkdir -p /home/${var.admin_username}'",
-        "sudo su -c 'mkdir -p /volumes/nginx/html'",
-        "sudo su -c 'mkdir -p /volumes/nginx/certs'",
-        "sudo su -c 'mkdir -p /volumes/nginx/vhostd'",
-        "sudo su -c 'mkdir -p /volumes/mongo/data'",
-        "sudo su -c 'chmod 770 /volumes/mongo/data'",
-        "sudo su -c 'touch /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MONGO_URL=${var.MONGO_URL}\" >> /home/${var.admin_username}/.env '",
-        "sudo su -c 'echo \"PORT=${var.PORT}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MONGO_DB=${var.MONGO_DB}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MAIL_SECRET_KEY=${var.MAIL_SECRET_KEY}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MAPBOX_ACCESS_TOKEN=${var.MAPBOX_ACCESS_TOKEN}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MAIL_SERVICE=${var.MAIL_SERVICE}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MAIL_USER=${var.MAIL_USER}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MONGO_INITDB_ROOT_USERNAME=${var.MONGO_INITDB_ROOT_USERNAME}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"MONGO_INITDB_ROOT_PASSWORD=${var.MONGO_INITDB_ROOT_PASSWORD}\" >> /home/${var.admin_username}/.env'",
-        "sudo su -c 'echo \"DOMAIN=${var.DOMAIN}\" >> /home/${var.admin_username}/.env'",
+    inline = [ 
+      "sudo su -c 'mkdir -p /home/${var.admin_username}'",
+      "sudo su -c 'mkdir -p /volumes/nginx/html'",
+      "sudo su -c 'mkdir -p /volumes/nginx/certs'",
+      "sudo su -c 'mkdir -p /volumes/nginx/vhostd'",
+      "sudo su -c 'mkdir -p /volumes/mongo/data'",
+      "sudo su -c 'chmod 770 /volumes/mongo/data'",
+      "sudo su -c 'touch /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MONGO_URL=${var.MONGO_URL}\" >> /home/${var.admin_username}/.env '",
+      "sudo su -c 'echo \"PORT=${var.PORT}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MONGO_DB=${var.MONGO_DB}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MAIL_SECRET_KEY=${var.MAIL_SECRET_KEY}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MAPBOX_ACCESS_TOKEN=${var.MAPBOX_ACCESS_TOKEN}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MAIL_SERVICE=${var.MAIL_SERVICE}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MAIL_USER=${var.MAIL_USER}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MONGO_INITDB_ROOT_USERNAME=${var.MONGO_INITDB_ROOT_USERNAME}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"MONGO_INITDB_ROOT_PASSWORD=${var.MONGO_INITDB_ROOT_PASSWORD}\" >> /home/${var.admin_username}/.env'",
+      "sudo su -c 'echo \"DOMAIN=${var.DOMAIN}\" >> /home/${var.admin_username}/.env'",
     ]
     connection {
         type        = "ssh"
